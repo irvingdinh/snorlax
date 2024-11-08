@@ -1,6 +1,6 @@
 import { MetaFunction } from '@remix-run/node';
 
-import { Container } from '~/freud/components/Container';
+import { Hero } from '~/core/components/Hero';
 import { Navbar } from '~/freud/components/Navbar';
 
 export const meta: MetaFunction = () => {
@@ -18,9 +18,7 @@ export default function Page() {
     <div>
       <Navbar />
 
-      <Container>
-        <p>Lorem ipsum dolor sit amet</p>
-      </Container>
+      <Hero className="my-24" />
     </div>
   );
 }
