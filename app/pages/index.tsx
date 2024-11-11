@@ -1,8 +1,30 @@
+import { MetaFunction } from '@remix-run/node';
 import clsx from 'clsx';
 
 import { Container } from '~/freud/components/Container';
+import { Navbar } from '~/freud/components/Navbar';
 
-export const Hero = (props: React.HTMLAttributes<HTMLDivElement>) => {
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'Irving Dinh' },
+    {
+      name: 'description',
+      content: 'Just another Software Engineer based in Ho Chi Minh, Viet Nam',
+    },
+  ];
+};
+
+export default function Page() {
+  return (
+    <div>
+      <Navbar />
+
+      <Hero className="my-24" />
+    </div>
+  );
+}
+
+const Hero = (props: React.HTMLAttributes<HTMLDivElement>) => {
   const { className, ...otherProps } = props;
 
   return (
