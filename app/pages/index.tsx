@@ -4,10 +4,11 @@ import clsx from 'clsx';
 
 import { Container } from '~/components/Container';
 import { GitHubIcon, LinkedInIcon } from '~/components/SocialIcons';
+import { makeTitle } from '~/lib/utils';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Irving Dinh' },
+    { title: makeTitle() },
     {
       name: 'description',
       content: 'Just another Software Engineer based in Ho Chi Minh, Viet Nam',

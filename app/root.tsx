@@ -1,6 +1,6 @@
 import './tailwind.css';
 
-import { LinksFunction } from '@remix-run/node';
+import { LinksFunction, MetaFunction } from '@remix-run/node';
 import {
   Links,
   Meta,
@@ -12,8 +12,21 @@ import {
 import { Button } from '~/components/Button';
 import { Container } from '~/components/Container';
 import { SingleLayout } from '~/components/SingleLayout';
+import { makeTitle } from '~/lib/utils';
 
 export const links: LinksFunction = () => [];
+
+export const meta: MetaFunction = ({ error }) => {
+  if (error) {
+    return [
+      {
+        title: makeTitle('Oops'),
+      },
+    ];
+  }
+
+  return [];
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
