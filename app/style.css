@@ -1,0 +1,11 @@
+:root {
+    --header-height: 48px;
+}
+
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
