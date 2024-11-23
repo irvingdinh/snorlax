@@ -1,0 +1,21 @@
+.HeaderRoot {
+    background-color: var(--mantine-color-white);
+    box-shadow: var(--mantine-shadow-sm);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    z-index: var(--mantine-z-index-app);
+}
+
+.LinksContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+:where([data-mantine-color-scheme='dark']) {
+    .HeaderRoot {
+        background-color: var(--mantine-color-dark-6);
+    }
+}

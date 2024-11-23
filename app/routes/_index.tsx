@@ -1,7 +1,15 @@
+import { Container, Text } from '@mantine/core';
+
+import { Header } from '~/components/Header';
+
 export default function Page() {
   return (
-    <div className="p-4">
-      <p>Lorem ipsum dolor sit amet</p>
-    </div>
+    <>
+      <Header />
+
+      <Container mt="lg">
+        <Text>Coming soon!</Text>
+      </Container>
+    </>
   );
 }
