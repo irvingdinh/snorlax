@@ -96,7 +96,7 @@ export default function Page() {
 
   return (
     <Container mt="lg">
-      <Stack>
+      <Stack gap="lg">
         <Box>
           <Title order={2}>Proofreading</Title>
 
@@ -134,7 +134,7 @@ export default function Page() {
           <>
             <Divider variant="dashed" label="Output" />
 
-            <Card>
+            <Card shadow="sm" padding="lg" radius="md">
               <Text>{data.data.output}</Text>
             </Card>
           </>
