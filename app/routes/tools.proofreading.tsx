@@ -101,6 +101,7 @@ export default function Page() {
 
   const [data, setData] = useState<typeof actionData>();
   const [recaptchaToken, setRecaptchaToken] = useState<string>();
+  const [refreshRecaptcha, setRefreshRecaptcha] = useState(false);
 
   useEffect(() => {
     setData(actionData);
@@ -116,7 +117,10 @@ export default function Page() {
     <>
       <Header />
 
-      <GoogleReCaptcha onVerify={updateRecaptchaToken} />
+      <GoogleReCaptcha
+        onVerify={updateRecaptchaToken}
+        refreshReCaptcha={refreshRecaptcha}
+      />
 
       <Container mt="lg">
         <Stack gap="lg">
@@ -133,6 +137,7 @@ export default function Page() {
             method="POST"
             onSubmit={() => {
               setData(undefined);
+              setRefreshRecaptcha((v) => !v);
             }}
           >
             {recaptchaToken !== undefined && (
