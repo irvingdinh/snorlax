@@ -16,7 +16,8 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 export async function loader() {
   return json({
     env: {
-      RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY as string,
+      RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY || '',
+      GA_TRACKING_ID: process.env.GA_TRACKING_ID || '',
     },
   });
 }
@@ -34,6 +35,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body>
+        {loaderData.env.GA_TRACKING_ID !== '' && (
+          <GoogleAnalyticsInjector id={loaderData.env.GA_TRACKING_ID} />
+        )}
+
         <MantineProvider defaultColorScheme="auto">
           <GoogleReCaptchaProvider
             reCaptchaKey={loaderData.env.RECAPTCHA_SITE_KEY}
@@ -51,3 +56,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return <Outlet />;
 }
+
+const GoogleAnalyticsInjector = ({ id }: { id: string }) => {
+  return (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} />
+
+      <script
+        async
+        id="gtag-init"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', '${id}');
+          `,
+        }}
+      />
+    </>
+  );
+};
