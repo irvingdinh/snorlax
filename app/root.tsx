@@ -10,8 +10,12 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useLocation,
 } from '@remix-run/react';
+import { useEffect } from 'react';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+
+import { GtagService } from '~/core/services/gtag.service';
 
 export async function loader() {
   return json({
@@ -23,7 +27,15 @@ export async function loader() {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+
   const loaderData = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (loaderData.env.GA_TRACKING_ID) {
+      GtagService.pageView(location.pathname, loaderData.env.GA_TRACKING_ID);
+    }
+  }, [location, loaderData.env.GA_TRACKING_ID]);
 
   return (
     <html lang="en">

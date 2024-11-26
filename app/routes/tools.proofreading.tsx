@@ -22,6 +22,7 @@ import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import { Header } from '~/components/Header';
 import { AlertTriangleIcon } from '~/components/Icon';
+import { GtagService } from '~/core/services/gtag.service';
 import { RecaptchaService } from '~/core/services/recaptcha.service';
 import { ActionHelper } from '~/core/utils/action.helper';
 
@@ -105,6 +106,12 @@ export default function Page() {
 
   useEffect(() => {
     setData(actionData);
+
+    GtagService.event({
+      action: 'receive',
+      category: 'tools',
+      label: 'proofreading',
+    });
   }, [actionData]);
 
   const updateRecaptchaToken = useCallback((token: string) => {
@@ -138,6 +145,12 @@ export default function Page() {
             onSubmit={() => {
               setData(undefined);
               setRefreshRecaptcha((v) => !v);
+
+              GtagService.event({
+                action: 'submit',
+                category: 'tools',
+                label: 'proofreading',
+              });
             }}
           >
             {recaptchaToken !== undefined && (
