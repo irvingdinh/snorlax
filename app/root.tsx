@@ -3,17 +3,27 @@ import './styles.css';
 
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import {
+  json,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from '@remix-run/react';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
-import { RECAPTCHA_SITE_KEY } from '~/core/utils/constants';
+export async function loader() {
+  return json({
+    env: {
+      RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY as string,
+    },
+  });
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const loaderData = useLoaderData<typeof loader>();
+
   return (
     <html lang="en">
       <head>
@@ -25,7 +35,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <MantineProvider defaultColorScheme="auto">
-          <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_SITE_KEY}>
+          <GoogleReCaptchaProvider
+            reCaptchaKey={loaderData.env.RECAPTCHA_SITE_KEY}
+          >
             {children}
           </GoogleReCaptchaProvider>
         </MantineProvider>
