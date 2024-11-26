@@ -9,6 +9,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+
+import { RECAPTCHA_SITE_KEY } from '~/core/utils/constants';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -21,7 +24,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body>
-        <MantineProvider defaultColorScheme="auto">{children}</MantineProvider>
+        <MantineProvider defaultColorScheme="auto">
+          <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_SITE_KEY}>
+            {children}
+          </GoogleReCaptchaProvider>
+        </MantineProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
