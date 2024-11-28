@@ -1,19 +1,7 @@
-import * as process from 'node:process';
+import process from 'node:process';
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import {
-  Alert,
-  Box,
-  Button,
-  Card,
-  Code,
-  Container,
-  Divider,
-  Stack,
-  Text,
-  Textarea,
-  Title,
-} from '@mantine/core';
+import { Alert, Box, Button, Card, Code, Container, Divider, Stack, Text, Textarea, Title } from '@mantine/core';
 import { ActionFunctionArgs, MetaFunction } from '@remix-run/node';
 import { Form, useActionData, useNavigation } from '@remix-run/react';
 import Joi from 'joi';
@@ -49,8 +37,8 @@ type ActionResult = {
 };
 
 export async function action({
-  request,
-}: ActionFunctionArgs): Promise<ActionResult> {
+                               request,
+                             }: ActionFunctionArgs): Promise<ActionResult> {
   try {
     const formData = await request.formData();
 

@@ -18,6 +18,14 @@ export default defineConfig({
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
       },
+      routes(defineRoutes) {
+        return defineRoutes((route) => {
+          route('/', 'pages/index.tsx', { index: true });
+
+          route('/tools', 'pages/tools/index.tsx');
+          route('/tools/proofreading', 'pages/tools/proofreading.tsx');
+        });
+      },
     }),
     tsconfigPaths(),
   ],
