@@ -48,7 +48,7 @@ export const RootErrorBoundary = () => {
             </Text>
 
             <Group justify="center">
-              <Link to="/">
+              <Link to="/public">
                 <Button variant="subtle" size="md">
                   Take me back to home page
                 </Button>

@@ -1,6 +1,6 @@
 'use client';
 
-export class ActionHelper {
+export class UtilsService {
   static returnError(
     error: unknown,
     defaultMessage: string = 'An unexpected error occurred.',

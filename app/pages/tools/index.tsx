@@ -1,8 +1,19 @@
-import { Badge, Box, Card, Code, Container, Group, SimpleGrid, Stack, Text, Title } from '@mantine/core';
+import {
+  Badge,
+  Box,
+  Card,
+  Code,
+  Container,
+  Group,
+  SimpleGrid,
+  Stack,
+  Text,
+  Title,
+} from '@mantine/core';
 import { MetaFunction } from '@remix-run/node';
 import { Link } from '@remix-run/react';
 
-import { Header } from '~/components/Header';
+import { Header } from '~/components/molecules/Header';
 
 export const meta: MetaFunction = () => {
   return [

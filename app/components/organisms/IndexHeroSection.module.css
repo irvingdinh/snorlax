@@ -1,0 +1,45 @@
+.root {
+    margin-top: 4rem;
+}
+
+.profilePictureImage {
+    border-radius: 100%;
+    width: 64px;
+    height: 64px;
+}
+
+.titleWrapper {
+    margin-top: 1.5rem;
+    max-width: 640px;
+}
+
+.title {
+    color: var(--mantine-color-black);
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 2.5rem;
+
+    @media (min-width: $mantine-breakpoint-sm) {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }
+}
+
+.subtitle {
+    margin-top: 1.5rem;
+    line-height: 1.75rem;
+}
+
+.socialIconsWrapper {
+    margin-top: 1.5rem;
+}
+
+.socialIcon {
+    color: var(--mantine-color-dimmed);
+}
+
+:where([data-mantine-color-scheme='dark']) {
+    .title {
+        color: var(--mantine-color-white);
+    }
+}

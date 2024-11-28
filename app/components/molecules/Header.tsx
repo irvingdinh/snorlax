@@ -1,7 +1,7 @@
 import { ActionIcon, Box, Button, Container, Group, Text } from '@mantine/core';
 import { Link, useLocation } from '@remix-run/react';
 
-import { GitHubIcon, LinkedInIcon } from '~/components/Icon';
+import { GitHubIcon, LinkedInIcon } from '~/components/atoms/Icon';
 
 import styles from './Header.module.css';
 

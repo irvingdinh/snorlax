@@ -8,8 +8,8 @@ import {
   useRouteLoaderData,
 } from '@remix-run/react';
 
-import { RootErrorBoundary } from '~/core/components/RootErrorBoundary';
-import { RootLayout } from '~/core/components/RootLayout';
+import { RootErrorBoundary } from '~/components/templates/RootErrorBoundary';
+import { RootLayout } from '~/components/templates/RootLayout';
 
 export async function loader() {
   return json({

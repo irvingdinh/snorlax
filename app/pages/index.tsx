@@ -1,7 +1,7 @@
-import { Container, Text } from '@mantine/core';
 import { MetaFunction } from '@remix-run/node';
 
-import { Header } from '~/components/Header';
+import { Header } from '~/components/molecules/Header';
+import { IndexHeroSection } from '~/components/organisms/IndexHeroSection';
 
 export const meta: MetaFunction = () => {
   return [
@@ -24,10 +24,7 @@ export default function Page() {
   return (
     <>
       <Header />
-
-      <Container mt="lg">
-        <Text>Coming soon!</Text>
-      </Container>
+      <IndexHeroSection />
     </>
   );
 }

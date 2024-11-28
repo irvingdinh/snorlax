@@ -9,7 +9,7 @@ import {
 import { useEffect } from 'react';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
-import { GtagService } from '~/core/services/gtag.service';
+import { GtagService } from '~/services/gtag.service';
 
 type RootLayoutProps = {
   loaderData: {

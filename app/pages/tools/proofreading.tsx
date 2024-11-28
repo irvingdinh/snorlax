@@ -1,18 +1,30 @@
 import process from 'node:process';
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { Alert, Box, Button, Card, Code, Container, Divider, Stack, Text, Textarea, Title } from '@mantine/core';
+import {
+  Alert,
+  Box,
+  Button,
+  Card,
+  Code,
+  Container,
+  Divider,
+  Stack,
+  Text,
+  Textarea,
+  Title,
+} from '@mantine/core';
 import { ActionFunctionArgs, MetaFunction } from '@remix-run/node';
 import { Form, useActionData, useNavigation } from '@remix-run/react';
 import Joi from 'joi';
 import { useCallback, useEffect, useState } from 'react';
 import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
-import { Header } from '~/components/Header';
-import { AlertTriangleIcon } from '~/components/Icon';
-import { GtagService } from '~/core/services/gtag.service';
-import { RecaptchaService } from '~/core/services/recaptcha.service';
-import { ActionHelper } from '~/core/utils/action.helper';
+import { AlertTriangleIcon } from '~/components/atoms/Icon';
+import { Header } from '~/components/molecules/Header';
+import { GtagService } from '~/services/gtag.service';
+import { RecaptchaService } from '~/services/recaptcha.service';
+import { UtilsService } from '~/services/utils.service';
 
 export const meta: MetaFunction = () => {
   return [
@@ -37,8 +49,8 @@ type ActionResult = {
 };
 
 export async function action({
-                               request,
-                             }: ActionFunctionArgs): Promise<ActionResult> {
+  request,
+}: ActionFunctionArgs): Promise<ActionResult> {
   try {
     const formData = await request.formData();
 
@@ -61,7 +73,7 @@ export async function action({
       await RecaptchaService.verify(value['g-recaptcha-response']);
     } catch (error) {
       console.log(error);
-      return ActionHelper.returnError(error);
+      return UtilsService.returnError(error);
     }
 
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
